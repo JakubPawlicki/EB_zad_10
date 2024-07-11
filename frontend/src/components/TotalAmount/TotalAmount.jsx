@@ -24,7 +24,7 @@ export function TotalAmount() {
         cart.forEach(item => {
             fetchData(item.id)
         })
-    }, []);
+    }, [cart]);
 
     useEffect(() => {
         if (loaded === cart.length) {
