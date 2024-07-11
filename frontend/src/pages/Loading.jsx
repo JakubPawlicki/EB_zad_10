@@ -20,7 +20,7 @@ export const Loading = () => {
             console.log(cart)
             axiosInstance.post('/carts', {Products: cart})
         }, 5000)
-    }, [paymentFinished]);
+    }, [cart, paymentFinished]);
 
     if(!paymentFinished) {
         return (
@@ -32,9 +32,7 @@ export const Loading = () => {
         );
     }
     else {
-        {cart.forEach(item => {
-            removeItemFromCart(item.id)
-        })
+        {cart.forEach(item => removeItemFromCart(item.id))
         }
         return <Navigate to="/dziekujemy"></Navigate>
     }
