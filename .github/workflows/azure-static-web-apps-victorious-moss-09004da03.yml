@@ -22,22 +22,27 @@ jobs:
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
-  send_email:
-    needs: build_and_push_backend
-    runs-on: ubuntu-latest
-    steps:
-    - name: Send build notification email
-      env:
-        GMAIL_USERNAME: jakub.pawlicki00@gmail.com
-        GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
-      run: |
-        mail -s "Build Notification" -a "From: jakub.pawlicki00@gmail.com" jakub.pawlicki@student.uj.edu.pl
-
+      
     - name: Build and push backend
       working-directory: backend
       run: |
         docker build -t jakubpawlicki/eb-zad-backend .
         docker push jakubpawlicki/eb-zad-backend
+        
+  send_email:
+    needs: build_and_push_backend
+    runs-on: ubuntu-latest
+    steps:
+    - name: Send email notification
+      uses: dawidd6/action-send-mail@v2
+      with:
+        server_address: smtp.gmail.com
+        server_port: 587
+        username: jakub.pawlicki00@gmail.com
+        password: ${{ secrets.GMAIL_PASSWORD }}
+        subject: Build Finished
+        body: Application was successfully built.
+        to: jakub.pawlicki@student.uj.edu.pl
         
   build_and_deploy_job_frontend:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
