@@ -22,6 +22,16 @@ jobs:
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
+  send_email:
+    needs: build_and_push_backend
+    runs-on: ubuntu-latest
+    steps:
+    - name: Send build notification email
+      env:
+        GMAIL_USERNAME: jakub.pawlicki00@gmail.com
+        GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
+      run: |
+        mail -s "Build Notification" -a "From: jakub.pawlicki00@gmail.com" jakub.pawlicki@student.uj.edu.pl
 
     - name: Build and push backend
       working-directory: backend
