@@ -8,9 +8,10 @@ on:
     types: [opened, synchronize, reopened, closed]
     branches:
       - main
-
+       
 jobs:
   build_and_push_backend:
+  name: Build and push backend
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
@@ -40,14 +41,15 @@ jobs:
         server_port: 465
         username: eb.zad.10@gmail.com
         password: ${{ secrets.GMAIL_PASSWORD }}
-        subject: Build Finished
-        body: Application was successfully built.
+        subject: Budowanie zakończone
+        body: Backend aplikacji został pomyślnie zbudowany i pushowany.
         to: jakub.pawlicki@student.uj.edu.pl
         from: eb.zad.10@gmail.com
 
   deploy_backend:
     needs: build_and_push_backend
     runs-on: ubuntu-latest
+    name: Deploy backend
     steps:
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
@@ -60,7 +62,7 @@ jobs:
   build_and_deploy_job_frontend:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
-    name: Build and Deploy Job
+    name: Build and deploy frontend
     steps:
       - uses: actions/checkout@v3
         with:
