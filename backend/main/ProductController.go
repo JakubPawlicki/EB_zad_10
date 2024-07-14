@@ -11,9 +11,11 @@ type ProductController struct {
 }
 
 func (pc ProductController) getProductById(c echo.Context) error {
-	var product Product
-	pc.db.Scopes(ProductByID(c.Param("id"))).First(&product)
-	return c.JSON(http.StatusOK, '{"test":"test1"}')
+    jsonResponse := map[string]string{
+        "message": "Hello, World!",
+    }
+    
+    return c.JSON(http.StatusOK, jsonResponse)
 }
 
 func (pc ProductController) getProducts(c echo.Context) error {
