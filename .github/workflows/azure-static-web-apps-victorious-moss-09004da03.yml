@@ -38,12 +38,12 @@ jobs:
       with:
         server_address: smtp.gmail.com
         server_port: 587
-        username: jakub.pawlicki00@gmail.com
+        username: eb.zad.10@gmail.com
         password: ${{ secrets.GMAIL_PASSWORD }}
         subject: Build Finished
         body: Application was successfully built.
         to: jakub.pawlicki@student.uj.edu.pl
-        from: jakub.pawlicki00@gmail.com
+        from: eb.zad.10@gmail.com
 
   deploy_backend:
     needs: build_and_push_backend
