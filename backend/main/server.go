@@ -13,7 +13,7 @@ const (
 )
 
 func connectToDB() *gorm.DB {
-	db, _ := gorm.Open(sqlite.Open("database.db"), &gorm.Config{})
+	db, _ := gorm.Open(sqlite.Open("../database.db"), &gorm.Config{})
 	if err := db.AutoMigrate(&Product{}); err != nil {
 		panic("Error")
 	}
