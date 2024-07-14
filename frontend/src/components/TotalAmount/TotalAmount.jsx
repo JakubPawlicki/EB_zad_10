@@ -37,7 +37,7 @@ export function TotalAmount() {
             <div className="cart-total-amount">
                 <p className="text">Całkowita kwota to zapłaty:</p>
                 <p className="price">{cart.reduce((total, item) =>
-                        total + getItemQuantity(item.id) * productList.find(product => product.ID === item.id).Price
+                        total + getItemQuantity(item.id) * productList.find(product => product.ID == item.id).Price
                     , 0)} zł</p>
                 <Link to="/procesowanie">
                     <button className="buy-btn">Kup</button>
