@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const axiosInstance= axios.create({
-    baseURL: "http://localhost:9000"
+    baseURL: "https://eb-zad10-backend.azurewebsites.net"
 })
