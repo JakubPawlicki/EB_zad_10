@@ -31,6 +31,7 @@ jobs:
         docker push jakubpawlicki/eb-zad-backend
         
   send_email:
+    name: Send e-mail notification
     needs: build_and_push_backend
     runs-on: ubuntu-latest
     steps:
