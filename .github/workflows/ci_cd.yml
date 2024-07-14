@@ -11,7 +11,7 @@ on:
        
 jobs:
   build_and_push_backend:
-  name: Build and push backend
+    name: Build and push backend
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
