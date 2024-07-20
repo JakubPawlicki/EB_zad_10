@@ -7,6 +7,8 @@ def test_add_and_remove_laptop_to_cart(browser):
     
     browser.find_element(By.XPATH, "//*[contains(text(),'Laptopy')]").click()
     browser.find_element(By.CLASS_NAME, "product").click()
+    WebDriverWait(browser, 10).until(
+        EC.presence_of_element_located((By.CLASS_NAME, "product-details-right")))
     product_name = browser.find_element(By.XPATH, "//*[contains(@class,'product-details-right')]//p").text
     product_price = browser.find_element(By.CLASS_NAME, "product-details-price").text
     browser.find_element(By.XPATH, "//*[contains(text(),'Dodaj do koszyka')]").click()
@@ -32,6 +34,8 @@ def test_add_and_remove_smartphone_to_cart(browser):
     
     browser.find_element(By.XPATH, "//*[contains(text(),'Smartfony')]").click()
     browser.find_element(By.CLASS_NAME, "product").click()
+    WebDriverWait(browser, 10).until(
+        EC.presence_of_element_located((By.CLASS_NAME, "product-details-right")))
     product_name = browser.find_element(By.XPATH, "//*[contains(@class,'product-details-right')]//p").text
     product_price = browser.find_element(By.CLASS_NAME, "product-details-price").text
     browser.find_element(By.XPATH, "//*[contains(text(),'Dodaj do koszyka')]").click()
@@ -56,6 +60,8 @@ def test_add_and_remove_smartphone_to_cart(browser):
 def test_add_and_remove_headphones_to_cart(browser):
     browser.find_element(By.XPATH, "//*[contains(text(),'Słuchawki')]").click()
     browser.find_element(By.CLASS_NAME, "product").click()
+    WebDriverWait(browser, 10).until(
+        EC.presence_of_element_located((By.CLASS_NAME, "product-details-right")))
     product_name = browser.find_element(By.XPATH, "//*[contains(@class,'product-details-right')]//p").text
     product_price = browser.find_element(By.CLASS_NAME, "product-details-price").text
     browser.find_element(By.XPATH, "//*[contains(text(),'Dodaj do koszyka')]").click()
