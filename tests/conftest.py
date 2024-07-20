@@ -2,11 +2,14 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.options import Options
 
 
 @pytest.fixture(scope="module")
 def browser():
-    service = ChromeService(ChromeDriverManager().install())
+    options = Options()
+    options.add_argument('--headless')
+    service = ChromeService(ChromeDriverManager().install(), options=options)
     driver = webdriver.Chrome(service=service)
     driver.implicitly_wait(5)
     driver.get("https://victorious-moss-09004da03.5.azurestaticapps.net/")
