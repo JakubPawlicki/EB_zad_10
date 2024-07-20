@@ -13,7 +13,7 @@ def browser():
     # options.add_argument('--disable-dev-shm-usage')
     # # options.binary_location = "/opt/google/chrome/google-chrome"
     # service = ChromeService(ChromeDriverManager().install(), options=options)
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(executable_path="/opt/hostedtoolcache/setup-chrome/chromium/1330686/x64")
     driver.implicitly_wait(5)
     driver.get("https://victorious-moss-09004da03.5.azurestaticapps.net/")
     yield driver
