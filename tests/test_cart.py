@@ -15,6 +15,8 @@ def test_add_and_remove_laptop_to_cart(browser):
     cart.click()
     WebDriverWait(browser, 10).until(
         EC.presence_of_element_located((By.XPATH, f"//*[contains(text(),'{product_name}')]")))
+    WebDriverWait(browser, 10).until(
+        EC.presence_of_element_located((By.XPATH, f"//*[contains(text(),'Całkowita kwota')]")))
     product_name_in_cart = browser.find_element(By.CLASS_NAME, "cart-item-name").text
     product_price_in_cart = browser.find_element(By.CLASS_NAME, "cart-item-price").text.split(' ')[0]
     product_quantity = browser.find_element(By.XPATH, "//*[contains(@class,cart-item-quantity)]//input").get_attribute(
@@ -38,6 +40,8 @@ def test_add_and_remove_smartphone_to_cart(browser):
     cart.click()
     WebDriverWait(browser, 10).until(
         EC.presence_of_element_located((By.XPATH, f"//*[contains(text(),'{product_name}')]")))
+    WebDriverWait(browser, 10).until(
+        EC.presence_of_element_located((By.XPATH, f"//*[contains(text(),'Całkowita kwota')]")))
     product_name_in_cart = browser.find_element(By.CLASS_NAME, "cart-item-name").text
     product_price_in_cart = browser.find_element(By.CLASS_NAME, "cart-item-price").text.split(' ')[0]
     product_quantity = browser.find_element(By.XPATH, "//*[contains(@class,cart-item-quantity)]//input").get_attribute(
@@ -60,6 +64,8 @@ def test_add_and_remove_headphones_to_cart(browser):
     cart.click()
     WebDriverWait(browser, 10).until(
         EC.presence_of_element_located((By.XPATH, f"//*[contains(text(),'{product_name}')]")))
+    WebDriverWait(browser, 10).until(
+        EC.presence_of_element_located((By.XPATH, f"//*[contains(text(),'Całkowita kwota')]")))
     product_name_in_cart = browser.find_element(By.CLASS_NAME, "cart-item-name").text
     product_price_in_cart = browser.find_element(By.CLASS_NAME, "cart-item-price").text.split(' ')[0]
     product_quantity = browser.find_element(By.XPATH, "//*[contains(@class,cart-item-quantity)]//input").get_attribute(
