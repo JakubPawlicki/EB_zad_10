@@ -102,7 +102,7 @@ jobs:
     - name: Install Google Chrome
       uses: browser-actions/setup-chrome@latest
       with:
-        chrome-version: latest
+        chrome-version: 126
         install-dependencies: true
         install-chromedriver: true
     
