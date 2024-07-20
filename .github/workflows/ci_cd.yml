@@ -100,7 +100,7 @@ jobs:
         python-version: '3.9'
 
     - name: Install Google Chrome
-    - uses: browser-actions/setup-chrome@latest
+      uses: browser-actions/setup-chrome@latest
     
     - name: Install dependencies
       run: |
